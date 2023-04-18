@@ -36,7 +36,7 @@ const MenuMobile = ({
   setShowCategoryMenu,
   mobileMenu,
   setMobileMenu,
-  categories,
+  collection,
 }) => (
   <ul className="flex flex-col md:hidden font-bold absolute top-[50px] left-0 w-full h-[calc(100vh-50px)] bg-white border-t text-black">
     {dataLinks.map((item) => (
@@ -53,19 +53,19 @@ const MenuMobile = ({
 
             {showCategoryMenu && (
               <ul className="bg-black/[0.05] -mx-5 mt-4 -mb-4">
-                {dataSubLinks?.map((item, index) => (
+                {collection?.map(({ attributes: c, id }) => (
                   <Link
-                    key={index}
-                    href="/"
+                    key={id}
+                    href={`/collection/${c.slug}`}
                     onClick={() => {
                       setShowCategoryMenu(false);
                       setMobileMenu(false);
                     }}
                   >
                     <li className="py-4 px-8 border-t flex justify-between">
-                      {item.name}
+                      {c.name}
                       <span className="opacity-50 text-sm">
-                        {item.doc_count}
+                        {`(${c.products.data.length})`}
                       </span>
                     </li>
                   </Link>

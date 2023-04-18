@@ -39,7 +39,7 @@ const Menu = ({
   setShowCategoryMenu,
   mobileMenu,
   setMobileMenu,
-  categories,
+  collection,
 }) => (
   <ul className="hidden md:flex items-center gap-8 font-medium text-black">
     {dataLinks.map((item) => (
@@ -55,16 +55,16 @@ const Menu = ({
 
             {showCategoryMenu && (
               <ul className="bg-white absolute top-6 left-0 min-w-[250px] px-1 py-1 text-black shadow-lg">
-                {dataSubLinks.map((item, index) => (
+                {collection.map(({ attributes: c, id }) => (
                   <Link
-                    key={index}
-                    href="/"
+                    key={id}
+                    href={`/collection/${c.slug}`}
                     onClick={() => setShowCategoryMenu(false)}
                   >
-                    <li className="h-12 flex justify-between items-center px-3 hover:bg-black/[0.03] rounded-md">
-                      {item.name}
+                    <li className="h-12 flex justify-between items-center px-3 hover:bg-black/[0.03] rounded-md hover:text-[#a37e2c]">
+                      {c.name}
                       <span className="opacity-50 text-sm">
-                        {item.doc_count}
+                        {`(${c.products.data.length})`}
                       </span>
                     </li>
                   </Link>
@@ -73,7 +73,7 @@ const Menu = ({
             )}
           </li>
         ) : (
-          <li className="cursor-pointer">
+          <li className="cursor-pointer hover:text-[#a37e2c]">
             <Link href="/">{item.name}</Link>
           </li>
         )}

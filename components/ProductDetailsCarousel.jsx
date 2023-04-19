@@ -4,13 +4,12 @@ import { Carousel } from "react-responsive-carousel";
 
 const ProductDetailsCarousel = ({ images }) => {
   return (
-    <div className="text-white text-[20px] w-full max-w-[1360px] mx-auto sticky top-[50px]">
+    <div className="text-red-500 text-base w-full max-w-screen-2xl mx-auto sticky top-12">
       <Carousel
         infiniteLoop={true}
         showIndicators={false}
         showStatus={false}
         thumbWidth={100}
-        className="productCarousel"
       >
         {images?.map((img) => (
           <img
@@ -19,12 +18,6 @@ const ProductDetailsCarousel = ({ images }) => {
             alt={img.attributes.name}
           />
         ))}
-        {/* <img src="/p2.png" />
-        <img src="/p3.png" />
-        <img src="/p4.png" />
-        <img src="/p5.png" />
-        <img src="/p6.png" />
-        <img src="/p7.png" /> */}
       </Carousel>
     </div>
   );

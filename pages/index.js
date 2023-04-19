@@ -1,30 +1,55 @@
-import Image from "next/image";
-import { Inter } from "next/font/google";
 import Slider from "@/components/Slider";
-import { useEffect } from "react";
 import ProductCard from "@/components/ProductCard";
 import { fetchDataFromApi } from "@/utils/api";
-
-// const inter = Inter({ subsets: ["latin"] });
+import Link from "next/link";
 
 export default function Home({ products }) {
-  const brands = products.data.flatMap(
-    (brand) => brand.attributes.collections.data
-  );
-
-  const brandsName = brands.map((brand) => brand.attributes.slug);
-  const uniqueBrandsName = new Set(brandsName);
-
-  console.log("PRODUCTS:", products);
-  console.log("BRANDS:", brands);
-  console.log("uniqueBrandsName:", uniqueBrandsName);
-
   return (
     <main>
       <Slider />
-      <div className="text-center max-w-[800px] mx-auto mt-8 md:mt-8">
-        <div className="text-[28px] md:text-[34px] mb-2 font-semibold leading-light">
+      {/* heading and paragaph start */}
+      <div className="text-center max-w-[800px] mx-auto my-[50px] md:my-[80px]">
+        <div className="text-[28px] md:text-[34px] mb-5 font-semibold leading-tight">
           Get all your favorites here!
+        </div>
+        <div className="text-md md:text-xl">
+          Discover a world of elegance and style with our diverse collection of
+          timepieces, crafted to suit your individual preferences. At our store,
+          we pride ourselves on providing an extensive range of watches to cater
+          to the unique tastes of our customers.
+        </div>
+      </div>
+      {/* heading and paragaph end */}
+
+      <div className="flex flex-col md:flex-row justify-evenly items-center max-w-screen-2xl px-5 md:px-10 mx-auto gap-8">
+        <div className="relative rounded-lg overflow-hidden">
+          <img
+            className="w-full h-full object-cover"
+            src="/men-watch.png"
+            alt="Shop for Men"
+          />
+          <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+          <Link
+            href="/men"
+            className="absolute inset-0 flex items-center justify-center text-white font-bold text-3xl hover:opacity-80"
+          >
+            Shop for Men
+          </Link>
+        </div>
+
+        <div className="relative rounded-lg overflow-hidden">
+          <img
+            className="w-full h-full object-cover"
+            src="/women-watch.png"
+            alt="Shop for Women"
+          />
+          <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+          <Link
+            href="/women"
+            className="absolute inset-0 flex items-center justify-center text-white font-bold text-3xl hover:opacity-80"
+          >
+            Shop for Women
+          </Link>
         </div>
       </div>
 
@@ -41,8 +66,6 @@ export default function Home({ products }) {
 
 export async function getStaticProps(context) {
   const products = await fetchDataFromApi(`/api/products?populate=*`);
-
-  // const collections = await fetchDataFromApi(`/api/products?populate=*`);
 
   return {
     props: {

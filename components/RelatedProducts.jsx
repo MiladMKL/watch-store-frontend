@@ -19,24 +19,14 @@ const RelatedProducts = ({ products }) => {
     },
   };
   return (
-    <div className="mt-[50px] md:mt-[100px] mb-[50px] md:mb-0">
-      <div className="text-2xl font-bold mb-5 text-center">You Might Also Like</div>
-      <Carousel
-        responsive={responsive}
-        // containerClass="-mx-[10px]"
-        itemClass="px-[10px]"
-      >
+    <div className="mt-10 md:mt-24 mb-10 md:mb-0">
+      <div className="text-2xl font-bold mb-5 text-center">
+        You Might Also Like
+      </div>
+      <Carousel responsive={responsive} itemClass="px-[25px]">
         {products?.data?.map((product) => (
           <ProductCard key={product?.id} data={product} />
         ))}
-        {/* <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard /> */}
       </Carousel>
     </div>
   );

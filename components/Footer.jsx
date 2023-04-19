@@ -19,7 +19,7 @@ const Footer = () => {
           </div>
           <ul className="flex flex-col md:flex-row md:justify-end gap-4 text-center">
             {links.map((link) => (
-              <li key={link.href}>
+              <li key={link.label}>
                 <Link
                   href={link.href}
                   className="hover:text-gray-300 transition-colors duration-200"

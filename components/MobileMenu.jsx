@@ -6,39 +6,16 @@ const dataLinks = [
   { id: 1, href: "/", name: "Home" },
   { id: 2, href: "/men", name: "Men" },
   { id: 3, href: "/women", name: "Women" },
-  { id: 4, href: "/kids", name: "Kids" },
-  { id: 5, href: "/collections", name: "Collections", subMenu: true },
-];
-
-const dataSubLinks = [
-  { id: 1, name: "Adidas Original", doc_count: 11 },
-  { id: 2, name: "Yeezy", doc_count: 8 },
-  { id: 3, name: "Running shoes", doc_count: 64 },
-  { id: 4, name: "Football shoes", doc_count: 107 },
-];
-
-const data = [
-  { id: 1, name: "Home", url: "/" },
-  { id: 2, name: "About", url: "/about" },
-  { id: 3, name: "Categories", subMenu: true },
-  { id: 4, name: "Contact", url: "/contact" },
-];
-
-const subMenuData = [
-  { id: 1, name: "Jordan", doc_count: 11 },
-  { id: 2, name: "Sneakers", doc_count: 8 },
-  { id: 3, name: "Running shoes", doc_count: 64 },
-  { id: 4, name: "Football shoes", doc_count: 107 },
+  { id: 4, href: "/collections", name: "Collections", subMenu: true },
 ];
 
 const MenuMobile = ({
   showCategoryMenu,
   setShowCategoryMenu,
-  mobileMenu,
   setMobileMenu,
   collection,
 }) => (
-  <ul className="flex flex-col md:hidden font-bold absolute top-[50px] left-0 w-full h-[calc(100vh-50px)] bg-white border-t text-black">
+  <ul className="flex flex-col md:hidden font-bold absolute top-[60px] left-0 w-full h-[calc(100vh-50px)] bg-white border-t text-black">
     {dataLinks.map((item) => (
       <React.Fragment key={item.id}>
         {item?.subMenu ? (
@@ -65,7 +42,7 @@ const MenuMobile = ({
                     <li className="py-4 px-8 border-t flex justify-between">
                       {c.name}
                       <span className="opacity-50 text-sm">
-                        {`(${c.products.data.length})`}
+                        {`${c.products.data.length}`}
                       </span>
                     </li>
                   </Link>
